@@ -8,39 +8,44 @@
 </head>
 <body>
 
-    <div class="container">
-        <div class="row">
-            <h1> All Students</h1>
-        </div>
+<div class="container">
+    <div class="row">
+        <h1> All Students</h1>
+    </div>
 
-        <div class="row">
-            <div class="col-lg-3">
-                <a th:href="@{/students/new}" class="btn btn-primary btn-sm mb-3"> Register Students </a>
-            </div>
-
+    <div class="row">
+        <div class="col-lg-3">
+            <a th:href="@{/students/new}" class="btn btn-primary btn-sm mb-3"> Register Students </a>
         </div>
-        <table class="table">
-            <thead class="thead-light">
-            <tr>
-                <th scope="col">Student Name</th>
-                <th scope="col">Faculty</th>
-                <th scope="col">Email</th>
-                <th scope="col">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each ="student: ${students}">
-                <td th:text="${student.studentName}"> </td>
-                <td th:text="${student.studentFaculty}"> </td>
-                <td th:text="${student.studentEmail}"> </td>
-                <td>
-                    <a th:href="@{delete-student/{id}(id=${student.id})}"> <button type="submit" class="btn btn-danger"> Delete </button> </a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
 
     </div>
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">Student Name</th>
+            <th scope="col">Faculty</th>
+            <th scope="col">Email</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student: ${students}">
+            <td th:text="${student.studentName}"></td>
+            <td th:text="${student.studentFaculty}"></td>
+            <td th:text="${student.studentEmail}"></td>
+            <td>
+                <a th:href="@{edit-student/{id}(id=${student.id})}">
+                    <button type="submit" class="btn btn-primary"> Update</button>
+                </a>
+                <a th:href="@{delete-student/{id}(id=${student.id})}">
+                    <button type="submit" class="btn btn-danger"> Delete</button>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
 
 </body>
 </html>

@@ -24,4 +24,18 @@ public class StudentService {
     public void deleteStudent(Long id) {
         studentRepository.deleteById(id);
     }
+
+    public Student editStudent(int id) {
+        Student existingStudent = studentRepository.findById((long) id).orElse(null);
+        return existingStudent;
+    }
+
+    public Student updateStudent(int id, Student student) {
+        Student existingStudent = studentRepository.findById((long) id).orElse(null);
+        existingStudent.setStudentName(student.getStudentName());
+        existingStudent.setStudentFaculty(student.getStudentFaculty());
+        existingStudent.setStudentEmail(student.getStudentEmail());
+        studentRepository.save(existingStudent);
+        return existingStudent;
+    }
 }

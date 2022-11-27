@@ -41,6 +41,18 @@ public class StudentController {
         return "redirect:/students";
     }
 
+    @GetMapping("/edit-student/{id}")
+    public String editStudent(@PathVariable int id, Model model){
+        model.addAttribute("student",studentService.editStudent(id));
+        return "updateForm";
+    }
+
+    @PostMapping("/update-student/{id}")
+    public String updateStudent(@PathVariable int id, @ModelAttribute Student student, Model model){
+        model.addAttribute("student",studentService.updateStudent(id,student));
+        return "redirect:/students";
+    }
+
     // links are get method by default so use gert mapping instead of delete mapping
     @GetMapping("/delete-student/{id}")
     public String deleteStudent(@PathVariable Long id){

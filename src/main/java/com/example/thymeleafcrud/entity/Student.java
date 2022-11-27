@@ -33,4 +33,5 @@ public class Student {
         this.studentFaculty=studentFaculty;
         this.studentEmail=studentEmail;
     }
+
 }
