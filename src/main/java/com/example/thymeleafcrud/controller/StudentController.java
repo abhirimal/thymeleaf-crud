@@ -41,7 +41,8 @@ public class StudentController {
         return "redirect:/students";
     }
 
-    @DeleteMapping("/delete-student/{id}")
+    // links are get method by default so use gert mapping instead of delete mapping
+    @GetMapping("/delete-student/{id}")
     public String deleteStudent(@PathVariable Long id){
         studentService.deleteStudent(id);
         return "redirect:/students";

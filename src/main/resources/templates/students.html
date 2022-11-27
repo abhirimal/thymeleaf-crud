@@ -33,6 +33,9 @@
                 <td th:text="${student.studentName}"> </td>
                 <td th:text="${student.studentFaculty}"> </td>
                 <td th:text="${student.studentEmail}"> </td>
+                <td>
+                    <a th:href="@{delete-student/{id}(id=${student.id})}"> <button type="submit" class="btn btn-danger"> Delete </button> </a>
+                </td>
             </tr>
             </tbody>
         </table>
