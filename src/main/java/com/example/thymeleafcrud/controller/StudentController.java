@@ -16,6 +16,11 @@ public class StudentController {
     StudentService studentService;
 
     @GetMapping("/")
+    public String home(){
+        return "home";
+    }
+
+    @GetMapping("/students")
     public String viewAllStudents(Model model){
         List<Student> stu = studentService.displayAllStudents();
 //        model.addAttribute("students",studentService.displayAllStudents());
@@ -23,16 +28,23 @@ public class StudentController {
         return "students";
     }
 
-    @PostMapping("/add-student")
-    public String addStudent(@ModelAttribute Student student, Model model){
+    @GetMapping("/students/new")
+    public String addStudent(Model model){
+        Student student = new Student();
+        model.addAttribute("students",student);
+        return "registerStudent";
+    }
+
+    @PostMapping("/add-students")
+    public String addStudent(@ModelAttribute Student student){
         studentService.saveStudent(student);
-        return "students";
+        return "redirect:/students";
     }
 
     @DeleteMapping("/delete-student/{id}")
     public String deleteStudent(@PathVariable Long id){
         studentService.deleteStudent(id);
-        return "students";
+        return "redirect:/students";
     }
 
 
