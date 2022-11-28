@@ -60,7 +60,12 @@ public class StudentController {
         return "redirect:/students";
     }
 
-
+    @PostMapping("/search-student")
+    public String searchStudent(@RequestParam(value="studentName", required=true) String studentName,Model model){
+        List<Student> foundStudents = studentService.searchStudent(studentName);
+        model.addAttribute("student",foundStudents);
+        return "searchResult";
+    }
 
 
 }

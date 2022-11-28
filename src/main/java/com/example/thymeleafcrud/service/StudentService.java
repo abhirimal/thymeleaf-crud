@@ -38,4 +38,8 @@ public class StudentService {
         studentRepository.save(existingStudent);
         return existingStudent;
     }
+
+    public List<Student> searchStudent(String studentName) {
+        return  studentRepository.findByStudentName(studentName);
+    }
 }
