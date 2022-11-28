@@ -1,16 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+    xmlns:layout="http://wwww.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="layout/layout">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
 <body>
 
-<header th:insert="fragments/navbar.html"> </header>
+<div layout:fragment="content">
+    <h1> Welcome to Nepal College of Information Technology </h1>
 
-<h1> Welcome to Mount Glory English Boarding High School</h1>
+</div>
 
-<footer th:insert="fragments/footer.html"> </footer>
+
+<!--can add fragments manually like this too but it will not be efficient in large programs-->
+<!--<header th:insert="fragments/navbar.html"> </header>-->
+<!--<footer th:insert="fragments/footer.html"> </footer>-->
 
 
 </body>
