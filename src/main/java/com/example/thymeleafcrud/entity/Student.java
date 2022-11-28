@@ -27,11 +27,7 @@ public class Student {
 
     private String studentEmail;
 
+    private String studentPassword;
 
-    public Student(String studentName, String studentFaculty, String studentEmail) {
-        this.studentName=studentName;
-        this.studentFaculty=studentFaculty;
-        this.studentEmail=studentEmail;
     }
 
-}

@@ -4,6 +4,7 @@ import com.example.thymeleafcrud.entity.Student;
 import com.example.thymeleafcrud.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
 import java.util.List;
 
@@ -18,7 +19,13 @@ public class StudentService {
     }
 
     public void saveStudent(Student student) {
-        studentRepository.save(student);
+        Student newStudent = new Student();
+        String encryptedPassword = DigestUtils.md5DigestAsHex(student.getStudentPassword().getBytes());
+        newStudent.setStudentName(student.getStudentName());
+        newStudent.setStudentFaculty(student.getStudentFaculty());
+        newStudent.setStudentEmail(student.getStudentEmail());
+        newStudent.setStudentPassword(encryptedPassword);
+        studentRepository.save(newStudent);
     }
 
     public void deleteStudent(Long id) {
